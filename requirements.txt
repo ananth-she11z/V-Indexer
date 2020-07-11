@@ -1,0 +1,5 @@
+xlrd==1.2.0
+docx==0.2.4
+python-docx==0.8.10
+pyfiglet==0.8.post1
+
