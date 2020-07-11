@@ -1,6 +1,7 @@
 Introduction -
 
 V-Indexer is an offline tool created in Python3 by Ananth Gottimukala (she11z) as an alternative to SANS Voltaire which is a SANS indexing tool
+Special thanks to @Anirban Dey and @Scott Hughes
 
 Voltaire is really a good online web-based tool for SANS indexing. But, due to few bugs it's not feasible. V-Indexer tool will give similar output with same columns in .docx format.
 
