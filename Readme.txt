@@ -70,6 +70,10 @@ Instructions -
                           "Sheet1"
 
 
+Sample output in .docx format - 
+
+![alt text](https://github.com/ananth-she11z/V-Indexer/Sample_Output.png?raw=true)
+
 Contact -
 
 For reporting issues or for any further information, Please contact me at - ananth DOT venk88 AT gmail DOT com
