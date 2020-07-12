@@ -72,7 +72,7 @@ Instructions -
 
 Sample output in .docx format - 
 
-![alt text](https://github.com/ananth-she11z/V-Indexer/Sample_Output.png?raw=true)
+https://github.com/ananth-she11z/V-Indexer/Sample_Output.png
 
 Contact -
 
