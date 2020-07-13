@@ -59,7 +59,9 @@ Instructions -
     NOTE: If you have multiple book/page numbers for one keyword please use "-" as delimiter between page/book numbers (Eg: 115-145)
 
 2. V-Indexer will only process ".xlsx" having multiple "sheets" per instance by using -s option. Default set to "Sheet1"
+
 3. Output filename will be "Index_<sheet name>.docx" & "Index_<sheet name>.csv" created in the same directory as script and your index file
+
 4. Help menu will look like below - NOTE: If you have spaces in your filename or sheet name, Please use "" to encapsulate the arguments. Example -
 
     python Vindexer.py -k 2 -f "My Index.xlsx" -c gdat -s "Book 1"
