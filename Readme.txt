@@ -5,7 +5,7 @@ Special thanks to @Anirban Dey and @Scott Hughes
 
 Voltaire is really a good online web-based tool for SANS indexing. But, due to few bugs it's not feasible. V-Indexer tool will give similar output with same columns in .docx and .csv format.
 
-Below are some issues with Voltaire and how I have mitigated in my version -
+Below are some issues with Voltaire and how I have mitigated in V-Indexer (Added more fantastic features) -
 
 1. Voltaire is web-based tool requires you to login via any account - V-Indexer is an offline python script which can be run on local system and the code is clear and visible
 
