@@ -17,14 +17,15 @@ Below are some issues with Voltaire and how I have mitigated in my version -
    NOTE: The way V-Indexer works is, if you have a row with two or more keywords having same description and book/page locations, V-Indexer will fetch each keyword and add it to another new row having the same details.
    In short V-Indexer will process all your multiple keywords in a single column for better visibility. Example below -
 
-   | keyword-1 | keyword-2 | Description | Book | Page |
-   | container | Docker    | spin me     |  2   | 115  |
+   | keyword-1 | keyword-2 | Keyword-N    | Description | Book | Page |
+   | container | Docker    | Docker Image | spin me     |  2   | 115  |
 
    In above example V-Indexer will process it as follows -
 
-   | keyword   | Description | Book | Page |
-   | container | spin me     |  2   | 115  |
-   | Docker    | spin me     |  2   | 115  |
+   | keyword      | Description | Book | Page |
+   | container    | spin me     |  2   | 115  |
+   | Docker       | spin me     |  2   | 115  |
+   | Docker Image | spin me     | 2    | 115 |
 
    Now you can find these under both Cc and Dd in your final index files ;)
 
