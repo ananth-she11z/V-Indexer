@@ -8,13 +8,20 @@ Voltaire is really a good online web-based tool for SANS indexing. But, due to f
 Below are some issues with Voltaire and how I have mitigated in my version -
 
 1. Voltaire is web-based tool requires you to login via any account - V-Indexer is an offline python script which can be run on local system and the code is clear and visible
+
 2. Voltaire saves your index data online - V-Indexer don't require to save any data, it just takes an offline index file in .xlsx and process it to give you Index_<sheet name>.docx and Index_<sheet name>.csv index file
+
 3. Voltaire requires you to use first character of every keyword/title in upper case - V-Indexer can digest both lowercase and uppercase (if you mistakenly use both still OK ;)
+
 4. Voltaire requires you to have atlease one keyword for every character (A to Z) - V-Indexer will still process even if you have few characters with no indexing and will mention you about it in .docx file
+
 5. Voltaire fails to index the last character (i.e Z) even if you have indexed - V-Indexer covers every alphabet, number and special character statically feeded without usage of any Regex
+
 6. Voltaire gives multiple output file formats but yet outputs only .docx format - V-Indexer will produce index in two formats ".docx" and ".csv" for user flexibillity
+
 7. Voltaire takes only one keyword - V-Indexer gives you freedom to include any number of keywords per row with same description and book/page (-k option lets you mention how many columns you have keywords in your index)
-   NOTE: The way V-Indexer works is, if you have a row with two or more keywords having same description and book/page locations, V-Indexer will fetch each keyword and add it to another new row having the same details.
+
+   NOTE: The way V-Indexer works is, if you have a row with two or more keywords having same description and book/page locations, V-Indexer will fetch each keyword    and add it to another new row having the same details.
    In short V-Indexer will process all your multiple keywords in a single column for better visibility. Example below -
 
    | keyword-1 | keyword-2 | Keyword-N    | Description | Book | Page |
