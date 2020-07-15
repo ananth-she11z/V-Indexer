@@ -1,4 +1,21 @@
-Introduction -
+          .__           ____ ____
+  _____|  |__   ____/_   /_   |_______
+ /  ___/  |  \_/ __ \|   ||   \___   /
+ \___ \|   Y  \  ___/|   ||   |/    /
+/____  >___|  /\___  >___||___/_____ \
+     \/     \/     \/               \/
+____   ____         .___            .___
+\   \ /   /         |   | ____    __| _/____ ___  ___ ___________
+ \   Y   /   ______ |   |/    \  / __ |/ __ \\  \/  // __ \_  __ \
+  \     /   /_____/ |   |   |  \/ /_/ \  ___/ >    <\  ___/|  | \/
+   \___/            |___|___|  /\____ |\___  >__/\_ \\___  >__|
+                             \/      \/    \/      \/    \/
+
+
+                                                                        (SANS Index Prettifier)
+
+
+Introduction - v11.1
 
 V-Indexer is an offline tool created in Python3 by Ananth Gottimukala (she11z) as an alternative to SANS Voltaire which is a SANS indexing tool
 Special thanks to @Anirban Dey and @Scott Hughes
@@ -19,7 +36,9 @@ Below are some issues with Voltaire and how I have mitigated in V-Indexer (Added
 
 6. Voltaire gives multiple output file formats but yet outputs only .docx format - V-Indexer will produce index in two formats ".docx" and ".csv" for user flexibillity
 
-7. Voltaire takes only one keyword - V-Indexer gives you freedom to include any number of keywords per row with same description and book/page (-k option lets you mention how many columns you have keywords in your index)
+7. Voltair has no options to process specific/multiple sheets - V-Indexer gives you option "-s" where you can either specify any sheet name under your .xlsx file or simply use "all or ALL" with -s option to process all the sheets
+
+8. Voltaire takes only one keyword - V-Indexer gives you freedom to include any number of keywords per row with same description and book/page (-k option lets you mention how many columns you have keywords in your index)
 
    NOTE: The way V-Indexer works is, if you have a row with two or more keywords having same description and book/page locations, V-Indexer will fetch each keyword    and add it to another new row having the same details.
    In short V-Indexer will process all your multiple keywords in a single column for better visibility. Example below -
@@ -57,27 +76,51 @@ Instructions -
 
     NOTE: Keep your header in place. Script will automatically exclude 0th row as header from processing
     NOTE: If you have multiple book/page numbers for one keyword please use "-" as delimiter between page/book numbers (Eg: 115-145)
+    NOTE: Make sure you have the same above mentioned format in all your sheets
 
-2. V-Indexer will only process ".xlsx" having multiple "sheets" per instance by using -s option. Default set to "Sheet1"
+2. V-Indexer will only process ".xlsx" having multiple "sheets" by using -s option (Eg: "-s Sheet1" OR "-s all" OR "-s 'My Sheet'" OR "-s ALL")
 
 3. Output filename will be "Index_<sheet name>.docx" & "Index_<sheet name>.csv" created in the same directory as script and your index file
 
 4. Help menu will look like below - NOTE: If you have spaces in your filename or sheet name, Please use "" to encapsulate the arguments. Example -
 
-    python Vindexer.py -k 2 -f "My Index.xlsx" -c gdat -s "Book 1"
+          .__           ____ ____
+  _____|  |__   ____/_   /_   |_______
+ /  ___/  |  \_/ __ \|   ||   \___   /
+ \___ \|   Y  \  ___/|   ||   |/    /
+/____  >___|  /\___  >___||___/_____ \
+     \/     \/     \/               \/
+____   ____         .___            .___
+\   \ /   /         |   | ____    __| _/____ ___  ___ ___________
+ \   Y   /   ______ |   |/    \  / __ |/ __ \\  \/  // __ \_  __ \
+  \     /   /_____/ |   |   |  \/ /_/ \  ___/ >    <\  ___/|  | \/
+   \___/            |___|___|  /\____ |\___  >__/\_ \\___  >__|
+                             \/      \/    \/      \/    \/
 
-    Usage: Vindexer.py [options]
 
-    Options:
-      --version           show program's version number and exit
-      -h, --help          show this help message and exit
-      -k KEYWORD_COLUMNS  Enter number of columns you have with keywords in your
-                          index
-      -f INDEX_FILENAME   Index filename (.xlsx)
-      -c COURSE_NAME      Enter which course you are preparing for (Eg: GDAT,
-                          GCIH) Default set to "SANS"
-      -s SHEET_NAME       Please specify which sheet to process. Default set to
-                          "Sheet1"
+                                                                        (SANS Index Prettifier)
+
+Author: Ananth Gottimukala (she11z)
+GitHub: https://github.com/ananth-she11z
+LinkedIn: https://www.linkedin.com/in/ananth-she11z
+
+Special thanks to @Anirban Dey and @Scott Hughes
+-------------------------------------------------------------------------------------------------------
+Usage: V-Indexer.py [options]
+
+Options:
+  --version           show program's version number and exit
+  -h, --help          show this help message and exit
+  -k KEYWORD_COLUMNS  Enter number of columns you have with keywords in your
+                      index
+  -f INDEX_FILENAME   Index filename (.xlsx)
+  -c COURSE_NAME      Enter which course you are preparing for (Eg: GDAT,
+                      GCIH) Default set to "SANS"
+  -s SHEET_NAME       Please specify which sheet to process. (Either -s
+                      <SheetName> for specific sheet OR -s <all/ALL> to
+                      process all available sheets (Make sure all sheets are
+                      in the same format with similar column structure)
+
 
 Contact -
 
