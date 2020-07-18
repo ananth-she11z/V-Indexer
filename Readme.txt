@@ -82,7 +82,7 @@ Instructions -
     | Keyword-1 | keyword-2 | ............. | keyword-N | Description | Book Number | Page Number |
 
     NOTE: Keep your header in place. Script will automatically exclude 0th row as header from processing
-    NOTE: If you have multiple book/page numbers for one keyword please use "-" as delimiter between page/book numbers (Eg: 115-145)
+    NOTE: If you have multiple book/page numbers for one keyword and the output is not desirable with missing "," between page/book numbers then please use "-" as delimiter between page/book numbers (Eg: 115-145) in place of (115,145)
     NOTE: Make sure you have the same above mentioned format in all your sheets
 
 2. V-Indexer will only process ".xlsx" having multiple "sheets" by using -s option (Eg: "-s Sheet1" OR "-s all" OR "-s 'My Sheet'" OR "-s ALL")
