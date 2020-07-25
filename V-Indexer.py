@@ -20,7 +20,7 @@ from docx.enum.dml import MSO_THEME_COLOR_INDEX
 
 def banner():
 
-    custom_fig = Figlet(font='graffiti')
+    custom_fig = Figlet(font='standard')
     print(custom_fig.renderText('she11z V-Indexer'))
     print('\n\t\t\t\t\t\t\t\t\t(SANS Index Prettifier)')
     print('\nAuthor: Ananth Gottimukala (she11z)')
