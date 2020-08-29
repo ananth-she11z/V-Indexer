@@ -91,6 +91,7 @@ Instructions -
 |___/_| |_|\___|_|_/___|    \_/     |___|_| |_|\__,_|\___/_/\_\___|_|
 
 
+
                                                                         (SANS Index Prettifier)
 
 Author: Ananth Gottimukala (she11z)
@@ -113,7 +114,9 @@ Options:
                       <SheetName> for specific sheet OR -s <all/ALL> to
                       process all available sheets (Make sure all sheets are
                       in the same format with similar column structure)
-
+  -a CASE             Keywords in Upper/Lower/Capitalize case (Eg: -a
+                      lower/upper/capitalize)
+                      
 
 Contact -
 
