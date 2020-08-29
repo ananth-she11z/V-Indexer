@@ -34,6 +34,7 @@ parser.add_option('-k', dest='keyword_columns', type=int, help='Enter number of 
 parser.add_option('-f', dest='index_filename', help='Index filename (.xlsx)')
 parser.add_option('-c', dest='course_name', default='SANS', help='Enter which course you are preparing for (Eg: GDAT, GCIH) Default set to "SANS"')
 parser.add_option('-s', dest='sheet_name', help='Please specify which sheet to process. (Either -s <SheetName> for specific sheet OR -s <all/ALL> to process all available sheets (Make sure all sheets are in the same format with similar column structure)')
+parser.add_option('-a', dest='case', help='Keywords in Upper/Lower case (Eg: -kc lower/upper)')
 (options, arguments) = parser.parse_args()
 
 def usage():
@@ -89,7 +90,10 @@ def segregate_by_keywords():    # loop through all the columns with keywords
         for data in reader:
             for k in range(i,int(n)):
                 if data[k]:
-                    csv_writer.writerow([data[k], data[int(n)], data[int(n)+1], data[int(n)+2]])
+                    if options.case.upper() == 'UPPER':
+                        csv_writer.writerow([data[k].upper().strip(), data[int(n)], data[int(n)+1], data[int(n)+2]])
+                    if options.case.upper() == 'LOWER':
+                        csv_writer.writerow([data[k].lower().strip(), data[int(n)], data[int(n)+1], data[int(n)+2]])
 
     except IndexError as e:
         print('\n[-] Please double check - Either number of columns are wrong OR all sheets are not same if "-s all/ALL" selected')
