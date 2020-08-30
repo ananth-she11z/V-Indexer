@@ -115,7 +115,8 @@ Options:
                       process all available sheets (Make sure all sheets are
                       in the same format with similar column structure)
   -a CASE             Keywords in Upper/Lower/Capitalize case (Eg: -a
-                      lower/upper/capitalize)
+                      lower/upper/capitalize) Default is set to however you
+                      have written
                       
 
 Contact -
