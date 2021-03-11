@@ -14,8 +14,13 @@ LinkedIn: https://www.linkedin.com/in/ananth-she11z
 Special thanks to @Anirban Dey and @Scott Hughes
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Update @Backsmash:
 
-Introduction - v11.1
+- Added -o parameter to provide output filename, takes input filename when not specified. - Handy when you have multiple indexes in 1 folder.
+- The workbooks use an alternative numbering. Use EX#.#-# for specific page numbers. For example: EX4.2-15 for excersise 4.2 page 15.
+- Due to update in xlrd, your sourcefile now must be an XLS file.
+
+Introduction - v11.2
 
 V-Indexer is an offline tool created in Python3 by Ananth Gottimukala (she11z) as an alternative to SANS Voltaire which is a SANS indexing tool
 Special thanks to @Anirban Dey and @Scott Hughes

@@ -34,7 +34,7 @@ parser.add_option('-k', dest='keyword_columns', type=int, help='Enter number of 
 parser.add_option('-f', dest='index_filename', help='Index filename (.xlsx)')
 parser.add_option('-c', dest='course_name', default='SANS', help='Enter which course you are preparing for (Eg: GDAT, GCIH) Default set to "SANS"')
 parser.add_option('-s', dest='sheet_name', help='Please specify which sheet to process. (Either -s <SheetName> for specific sheet OR -s <all/ALL> to process all available sheets (Make sure all sheets are in the same format with similar column structure)')
-parser.add_option('-a', dest='case', default='default', help='Keywords in Upper/Lower/Capitalize case (Eg: -a lower/upper/capitalize) Default is set to however you have written')
+parser.add_option('-o', dest='output_name', default='Index', help='Enter file output name. Default set to "Index"')
 (options, arguments) = parser.parse_args()
 
 def usage():
@@ -64,6 +64,7 @@ alphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q'
 non_alphabets = ['0','1','2','3','4','5','6','7','8','9','`','!','@','#','$','%','^','&','*','(',')','-','_','=','+','\"','[',']','{','}','\\','/','|',':',';',',','.','?','~']
 username = getpass.getuser()
 course_name = options.course_name
+output_name = options.output_name
 
 def csv_from_excel(sheet):   # converts your .xlsx file to .csv for backend parsing
 
@@ -90,12 +91,7 @@ def segregate_by_keywords():    # loop through all the columns with keywords
         for data in reader:
             for k in range(i,int(n)):
                 if data[k]:
-                    if options.case.upper() == 'UPPER':
-                        csv_writer.writerow([data[k].upper().strip(), data[int(n)], data[int(n)+1], data[int(n)+2]])
-                    elif options.case.upper() == 'LOWER':
-                        csv_writer.writerow([data[k].lower().strip(), data[int(n)], data[int(n)+1], data[int(n)+2]])
-                    else:
-                        csv_writer.writerow([data[k].lower().strip(), data[int(n)], data[int(n)+1], data[int(n)+2], data[k].strip()])
+                    csv_writer.writerow([data[k], data[int(n)], data[int(n)+1], data[int(n)+2]])
 
     except IndexError as e:
         print('\n[-] Please double check - Either number of columns are wrong OR all sheets are not same if "-s all/ALL" selected')
@@ -111,14 +107,9 @@ def sorting():  # will sort the final .csv file alphabelically
     sortedlist = sorted(data, key=operator.itemgetter(0))
 
     with open('index_sorted.csv', 'a', newline='') as f:
-        
       fileWriter = csv.writer(f, delimiter=',')
-    
-      if options.case == 'default':
-        for row in sortedlist:
-          fileWriter.writerow([row[4], row[1], row[2], row[3]])
-      else:
-        for row in sortedlist:
+
+      for row in sortedlist:
           fileWriter.writerow(row)
 
 def alpha_segregate(alpha): # extracts all index having alphabets
@@ -133,7 +124,12 @@ def alpha_segregate(alpha): # extracts all index having alphabets
                 output_filename = alpha + '.csv'
                 csv_file_output = open(output_filename, 'a', encoding='utf8')
                 csv_writer = csv.writer(csv_file_output)
-                csv_writer.writerow([str(index[0]), 'b' + str(index[2].split('.')[0]) + '/' + 'p' + str(index[3].split('.')[0]), str(index[1])])
+                page_number = str(index[3])
+                if str(index[3]).startswith("EX"):
+                    csv_writer.writerow ( [str ( index[0] ), 'b' + str ( index[2].split ( '.' )[0] ) + '/' + 'p' + str (
+                        index[3] ), str ( index[1] )] )
+                else:
+                    csv_writer.writerow([str(index[0]), 'b' + str(index[2].split('.')[0]) + '/' + 'p' + str(index[3].split('.')[0]), str(index[1])])
 
 def non_alpha_segregate(non_alpha): # extracts all non-alpha index
 
@@ -159,21 +155,17 @@ def alpha_document(alpha):  # main method for documenting alphabetical index
 
     for i in reader:
         if i:
-            if options.case.upper() == 'CAPITALIZE':
-                mydoc.add_heading(str(i[0].capitalize() + '  [' + str(i[1]) + ']'),3)
-                mydoc.add_paragraph().add_run(str(i[2])).italic = True
-            else:
-                mydoc.add_heading(str(i[0] + '  [' + str(i[1]) + ']'),3)
-                mydoc.add_paragraph().add_run(str(i[2])).italic = True
+            mydoc.add_heading(str(i[0] + '  [' + str(i[1]) + ']'),3)
+            mydoc.add_paragraph().add_run(str(i[2])).italic = True
 
 def delete():
 
     os.remove('index.csv')
     os.remove('index_parsed.csv')
-    print('\n[+] Done!! please find "Index_' + options.sheet_name + '.docx" & "Index_' + options.sheet_name + '.csv" files\'s in current directory')
+    print('\n[+] Done!! please find "' + options.output_name + options.sheet_name + '.docx" & "' + options.output_name + options.sheet_name + '.csv" files\'s in current directory')
     print('\n[+] Best Luck for exam !! ;)')
     print('-------------------------------------------------------------------------------------------------------')
-    csv_index_name = 'Index_' + options.sheet_name + '.csv'
+    csv_index_name = options.output_name + options.sheet_name + '.csv'
     os.rename('index_sorted.csv', csv_index_name)
 
 def cover_page():   # .docx cover page
@@ -263,7 +255,7 @@ def main(): # main method to start processing
         pass
 
     delete_csv_files()
-    docx_index_name = 'Index_' + options.sheet_name + '.docx'
+    docx_index_name = output_name + options.sheet_name + '.docx'
     mydoc.save(docx_index_name)
 
     try:
