@@ -11,8 +11,6 @@ Author: Ananth Gottimukala (she11z)
 GitHub: https://github.com/ananth-she11z
 LinkedIn: https://www.linkedin.com/in/ananth-she11z
 
-Special thanks to @Anirban Dey and @Scott Hughes
-
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Introduction - v11.1
@@ -97,7 +95,6 @@ Author: Ananth Gottimukala (she11z)
 GitHub: https://github.com/ananth-she11z
 LinkedIn: https://www.linkedin.com/in/ananth-she11z
 
-Special thanks to @Anirban Dey and @Scott Hughes
 -------------------------------------------------------------------------------------------------------
 Usage: V-Indexer.py [options]
 
